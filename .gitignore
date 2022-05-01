@@ -1,9 +1,12 @@
 build/
 node_modules/
 tls/
+reach
 .dockerignore
 .reach/smt-cache/639200235
 .reach/smt-cache/1791517138
 .reach/smt-cache/2296594161
 .reach/smt-cache/2358678201
 .reach/smt-cache/3797233150
+.vscode
+.reach/smt-cache/
