@@ -1,7 +1,7 @@
 import React from 'react';
-import PlayerViews from './PlayerViews';
+import UserViews from './UserViews';
 
-const exports = {...PlayerViews};
+const exports = {...UserViews};
 
 const sleep = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
 
@@ -10,28 +10,7 @@ exports.Wrapper = class extends React.Component {
     const {content} = this.props;
     return (
       <div className="Deployer">
-        <h2>Deployer (Alice)</h2>
         {content}
-      </div>
-    );
-  }
-}
-
-exports.SetWager = class extends React.Component {
-  render() {
-    const {parent, defaultWager, standardUnit} = this.props;
-    const wager = (this.state || {}).wager || defaultWager;
-    return (
-      <div>
-        <input
-          type='number'
-          placeholder={defaultWager}
-          onChange={(e) => this.setState({wager: e.currentTarget.value})}
-        /> {standardUnit}
-        <br />
-        <button
-          onClick={() => parent.setWager(wager)}
-        >Set wager</button>
       </div>
     );
   }
@@ -39,14 +18,13 @@ exports.SetWager = class extends React.Component {
 
 exports.Deploy = class extends React.Component {
   render() {
-    const {parent, wager, standardUnit} = this.props;
+    const {parent} = this.props;
     return (
       <div>
-        Wager (pay to deploy): <strong>{wager}</strong> {standardUnit}
         <br />
         <button
           onClick={() => parent.deploy()}
-        >Deploy</button>
+        >CREATE GROUP</button>
       </div>
     );
   }
@@ -55,7 +33,7 @@ exports.Deploy = class extends React.Component {
 exports.Deploying = class extends React.Component {
   render() {
     return (
-      <div>Deploying... please wait.</div>
+      <div>Creating Group... please wait.</div>
     );
   }
 }
@@ -76,8 +54,6 @@ exports.WaitingForAttacher = class extends React.Component {
     const {ctcInfoStr} = this.props;
     return (
       <div>
-        Waiting for Attacher to join...
-        <br /> Please give them this contract info:
         <pre className='ContractInfo'>
           {ctcInfoStr}
         </pre>

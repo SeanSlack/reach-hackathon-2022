@@ -1,14 +1,12 @@
 import React from 'react';
-import PlayerViews from './PlayerViews';
+import UserViews from './UserViews';
 
-const exports = {...PlayerViews};
-
+const exports = {...UserViews};
 exports.Wrapper = class extends React.Component {
   render() {
     const {content} = this.props;
     return (
       <div className="Attacher">
-        <h2>Attacher (Bob)</h2>
         {content}
       </div>
     );
@@ -21,7 +19,7 @@ exports.Attach = class extends React.Component {
     const {ctcInfoStr} = this.state || {};
     return (
       <div>
-        Please paste the contract info to attach to:
+        Enter Contract:
         <br />
         <textarea spellCheck="false"
           className='ContractInfo'
@@ -32,7 +30,7 @@ exports.Attach = class extends React.Component {
         <button
           disabled={!ctcInfoStr}
           onClick={() => parent.attach(ctcInfoStr)}
-        >Attach</button>
+        >JOIN</button>
       </div>
     );
   }
@@ -42,39 +40,30 @@ exports.Attaching = class extends React.Component {
   render() {
     return (
       <div>
-        Attaching, please wait...
+        Joining, please wait...
       </div>
     );
   }
 }
 
-exports.AcceptTerms = class extends React.Component {
+exports.Connected = class extends React.Component {
   render() {
-    const {wager, standardUnit, parent} = this.props;
-    const {disabled} = this.state || {};
+    const {ctcInfoStr} = this.state || {};
     return (
       <div>
-        The terms of the game are:
-        <br /> Wager: {wager} {standardUnit}
+        Connected to: {ctcInfoStr}
+      </div>
+    );
+  }
+}
+
+exports.ReadMessage = class extends React.Component {
+  render() {
+    const {parent} = this.props;
+    return (
+      <div>
+        <br /> Message:
         <br />
-        <button
-          disabled={disabled}
-          onClick={() => {
-            this.setState({disabled: true});
-            parent.termsAccepted();
-          }}
-        >Accept terms and pay wager</button>
-      </div>
-    );
-  }
-}
-
-exports.WaitingForTurn = class extends React.Component {
-  render() {
-    return (
-      <div>
-        Waiting for the other player...
-        <br />Think about which move you want to play.
       </div>
     );
   }

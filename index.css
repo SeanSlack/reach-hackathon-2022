@@ -16,7 +16,7 @@ code {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #355088;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,11 +36,20 @@ input[type=number] {
 }
 
 button {
-  font-size: calc(10px + 2vmin);
+  border: 2px solid #3f3f3f;
+  height: 80px;
+  width: 200px;
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  margin: 25px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 textarea {
-  font-size: calc(10px + 2vmin);
+  font-size: calc(15px + 2vmin);
 }
 
 .ContractInfo {
